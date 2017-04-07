@@ -1,6 +1,7 @@
 package ugr.pdm.rafalex.colorsmix;
 
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,33 +10,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-
-    //Datos de la vista
-    private Button start;
+public class LevelsList extends AppCompatActivity {
 
     //Datos para dialogos
     private AlertDialog menuDialog;
     private AlertDialog.Builder helpDialog;
 
+    //Dibujos
+    private ArrayList<Dibujo> dibujos = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_levels_list);
 
-        start = (Button) findViewById(R.id.start_button);
-
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Inicia la siguiente acitividad.
-                Intent i = new Intent(MainActivity.this, LevelsList.class);
-                startActivity(i);
-            }
-        });
+        //Inicializamos el array de dibujos
+        dibujos.add(new Dibujo(R.drawable.cerdo));
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();
@@ -48,6 +42,27 @@ public class MainActivity extends AppCompatActivity {
 
         menuDialog = helpDialog.create();
     }
+
+    //Función Resume de la actividad
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
+        // Establece la vista, el adaptador y la funcion al hacer click de los elementos de la lista
+        ListView pairedListView = (ListView) findViewById(R.id.level_selector);
+        pairedListView.setAdapter(new DibujoAdapter(dibujos));
+        pairedListView.setOnItemClickListener(DibujoClickListener);
+
+    }
+
+
+    // OnItemClickListener para los dispositivos de la lista
+    private AdapterView.OnItemClickListener DibujoClickListener = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView av, View v, int arg2, long arg3) {
+
+        }
+    };
 
     //Función onCreateOptionMenu, para añadir el estilo de nuestro action_bar
     @Override
