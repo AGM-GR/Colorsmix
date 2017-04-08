@@ -30,6 +30,9 @@ public class LevelsList extends AppCompatActivity {
 
         //Inicializamos el array de dibujos
         dibujos.add(new Dibujo(R.drawable.cerdo));
+        dibujos.add(new Dibujo(R.drawable.conejo));
+        dibujos.add(new Dibujo(R.drawable.leon));
+        dibujos.add(new Dibujo(R.drawable.kiwi));
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();
