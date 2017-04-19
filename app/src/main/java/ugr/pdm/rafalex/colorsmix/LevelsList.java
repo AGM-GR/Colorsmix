@@ -28,10 +28,10 @@ public class LevelsList extends AppCompatActivity {
         setContentView(R.layout.activity_levels_list);
 
         //Inicializamos el array de dibujos
-        dibujos.add(new Dibujo(R.drawable.cerdo_colored));
-        dibujos.add(new Dibujo(R.drawable.conejo_colored));
-        dibujos.add(new Dibujo(R.drawable.leon_colored));
-        dibujos.add(new Dibujo(R.drawable.kiwi_colored));
+        dibujos.add(new Dibujo(R.drawable.cerdo_colored, R.drawable.cerdo));
+        dibujos.add(new Dibujo(R.drawable.conejo_colored, R.drawable.conejo));
+        dibujos.add(new Dibujo(R.drawable.leon_colored, R.drawable.leon));
+        dibujos.add(new Dibujo(R.drawable.kiwi_colored, R.drawable.kiwi));
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();
@@ -65,6 +65,7 @@ public class LevelsList extends AppCompatActivity {
 
             // Inicia la siguiente acitividad.
             Intent i = new Intent(LevelsList.this, Paint.class);
+            i.putExtra("Dibujo", (Dibujo) av.getSelectedItem());
             startActivity(i);
         }
     };

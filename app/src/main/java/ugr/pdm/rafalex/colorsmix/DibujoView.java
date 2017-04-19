@@ -18,6 +18,6 @@ public class DibujoView extends LinearLayout {
     //Permite establecer el dibujo a mostrar
     public void setDibujo(Dibujo dibujo) {
 
-        image.setImageResource(dibujo.getDibujo());
+        image.setImageResource(dibujo.getDibujoColoreado());
     }
 }
