@@ -22,9 +22,9 @@ public class Paint extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //dibujo_seleccionado = (Dibujo) getIntent().getExtras().getSerializable("Dibujo");
+        dibujo_seleccionado = (Dibujo) getIntent().getExtras().getSerializable("Dibujo");
 
-        //imagen.setImageResource(dibujo_seleccionado.getDibujo());
-        //imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
+        imagen.setImageResource(dibujo_seleccionado.getDibujo());
+        imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
     }
 }
