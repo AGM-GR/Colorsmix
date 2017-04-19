@@ -31,7 +31,7 @@ public class DibujoAdapter extends BaseAdapter {
 
     //Devulve el ID del elemento (Generalmente no se usa)
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     //Devuelve la vista de un elemento

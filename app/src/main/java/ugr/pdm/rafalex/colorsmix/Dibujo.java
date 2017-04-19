@@ -2,6 +2,7 @@ package ugr.pdm.rafalex.colorsmix;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Dibujo implements Serializable {
 
     int dibujo_coloreado_resource;

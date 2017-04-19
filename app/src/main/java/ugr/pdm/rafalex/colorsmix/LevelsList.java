@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class LevelsList extends AppCompatActivity {
@@ -63,9 +65,12 @@ public class LevelsList extends AppCompatActivity {
     private AdapterView.OnItemClickListener DibujoClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView av, View v, int arg2, long arg3) {
 
+            Dibujo dibujo = (Dibujo) av.getSelectedItem();
+            Toast.makeText(getBaseContext(), dibujo.getDibujo(), Toast.LENGTH_SHORT).show();
+
             // Inicia la siguiente acitividad.
             Intent i = new Intent(LevelsList.this, Paint.class);
-            i.putExtra("Dibujo", (Dibujo) av.getSelectedItem());
+            //i.putExtra("Dibujo", dibujo);
             startActivity(i);
         }
     };
