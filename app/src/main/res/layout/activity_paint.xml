@@ -13,51 +13,63 @@
         android:id="@+id/image_sample"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:src="@drawable/cerdo_colored"
+        android:layout_weight="0.2"/>
 
     <ImageView
         android:id="@+id/image_painter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:src="@drawable/cerdo"
+        android:layout_weight="0.8"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <ToggleButton
             android:id="@+id/redColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textOff=""
+            android:textOn=""
             android:background="#FF0000" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/yellowColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textOff=""
+            android:textOn=""
             android:background="#FFFF00" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/blueColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textOff=""
+            android:textOn=""
             android:background="#0000FF" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/blackColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textOff=""
+            android:textOn=""
             android:background="#000000" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/whiteColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textOff=""
+            android:textOn=""
             android:background="#FFFFFF" />
 
 
