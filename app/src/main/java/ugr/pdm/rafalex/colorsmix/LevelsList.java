@@ -60,10 +60,13 @@ public class LevelsList extends AppCompatActivity {
     }
 
 
-    // OnItemClickListener para los dispositivos de la lista
+    // OnItemClickListener para las imágenes de la lista
     private AdapterView.OnItemClickListener DibujoClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView av, View v, int arg2, long arg3) {
 
+            // Inicia la siguiente acitividad.
+            Intent i = new Intent(LevelsList.this, Paint.class);
+            startActivity(i);
         }
     };
 
