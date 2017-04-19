@@ -1,7 +1,6 @@
 package ugr.pdm.rafalex.colorsmix;
 
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
