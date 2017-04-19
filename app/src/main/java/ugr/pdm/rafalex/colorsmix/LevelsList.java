@@ -63,10 +63,10 @@ public class LevelsList extends AppCompatActivity {
 
     // OnItemClickListener para las imágenes de la lista
     private AdapterView.OnItemClickListener DibujoClickListener = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView av, View v, int arg2, long arg3) {
+        public void onItemClick(AdapterView av, View v, int position, long id) {
 
-            //Dibujo dibujo = (Dibujo) av.getSelectedItem(); 
-            Toast.makeText(getBaseContext(), av.getSelectedItem().getClass().toString(), Toast.LENGTH_SHORT).show();
+            //Dibujo dibujo = (Dibujo) av.getSelectedItem();
+            Toast.makeText(getBaseContext(), av.getItemAtPosition(position).getClass().toString(), Toast.LENGTH_SHORT).show();
 
             // Inicia la siguiente acitividad.
             Intent i = new Intent(LevelsList.this, Paint.class);
