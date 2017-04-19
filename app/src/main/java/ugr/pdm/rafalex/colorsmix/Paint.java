@@ -1,9 +1,15 @@
 package ugr.pdm.rafalex.colorsmix;
 
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,6 +19,10 @@ public class Paint extends AppCompatActivity {
 
     private Dibujo dibujo_seleccionado = null;
     private int color_seleccionado = Color.rgb(0,0,0);
+
+    private AlertDialog menuDialog;
+    private AlertDialog.Builder helpDialog;
+
     private ImageView imagen_coloreada;
     private ImageView imagen;
     private ToggleButton botonAzul;
@@ -41,6 +51,17 @@ public class Paint extends AppCompatActivity {
         botonAzul.setOnCheckedChangeListener(ColorToggle);
         botonNegro.setOnCheckedChangeListener(ColorToggle);
         botonBlanco.setOnCheckedChangeListener(ColorToggle);
+
+        //Crea los dialogos
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.help_dialog, null);
+
+        helpDialog = new AlertDialog.Builder(this, R.style.DialogTheme)
+                .setView(dialogView)
+                .setTitle(R.string.menu_help)
+                .setNeutralButton(R.string.ok_button,null);
+
+        menuDialog = helpDialog.create();
     }
 
     @Override
@@ -52,6 +73,7 @@ public class Paint extends AppCompatActivity {
         imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
     }
 
+    //Comportamiento de los botones de colores
     private CompoundButton.OnCheckedChangeListener ColorToggle = new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isCheked) {
             if (isCheked) {
@@ -61,4 +83,25 @@ public class Paint extends AppCompatActivity {
         }
     };
 
+    //Función onCreateOptionMenu, para añadir el estilo de nuestro action_bar
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu); // set your file name
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //Función onOptionItemSelected, para definir el funcionamiento de las opciones del action_bar
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        if (item.getItemId() == R.id.help) {
+
+            menuDialog.show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
