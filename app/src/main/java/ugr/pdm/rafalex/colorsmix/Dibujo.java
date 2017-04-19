@@ -9,8 +9,8 @@ public class Dibujo implements Serializable {
 
     public Dibujo (int dibujo, int dibujo_coloreado) {
 
-        this.dibujo_coloreado_resource = dibujo_coloreado;
         this.dibujo_resource = dibujo;
+        this.dibujo_coloreado_resource = dibujo_coloreado;
     }
 
     public int getDibujoColoreado() {
