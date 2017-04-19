@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LevelsList"></activity>
+        <activity android:name=".LevelsList" />
+        <activity android:name=".Paint"></activity>
     </application>
 
 </manifest>
