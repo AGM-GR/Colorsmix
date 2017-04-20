@@ -1,24 +1,35 @@
 package ugr.pdm.rafalex.colorsmix;
 
 import android.app.AlertDialog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Paint extends AppCompatActivity {
 
     private Dibujo dibujo_seleccionado = null;
     private int color_seleccionado = Color.rgb(0,0,0);
+    private QueueLinearFloodFiller floodFiller = null;
 
     private AlertDialog menuDialog;
     private AlertDialog.Builder helpDialog;
@@ -37,6 +48,9 @@ public class Paint extends AppCompatActivity {
         setContentView(R.layout.activity_paint);
 
         imagen = (ImageView) findViewById(R.id.image_painter);
+        imagen.setDrawingCacheEnabled(true);
+        imagen.setOnTouchListener(touchColorListener);
+
         imagen_coloreada = (ImageView) findViewById(R.id.image_sample);
 
         botonRojo = (ToggleButton) findViewById(R.id.redColor);
@@ -73,12 +87,70 @@ public class Paint extends AppCompatActivity {
         imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
     }
 
+    //Comportamiento de la imagen al ser seleccionada
+    private View.OnTouchListener touchColorListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            Bitmap bmp = Bitmap.createBitmap(v.getDrawingCache());
+            int color = bmp.getPixel((int) event.getX(), (int) event.getY());
+
+            if (color == Color.TRANSPARENT)
+                return false;
+            else {
+
+                floodFiller = new QueueLinearFloodFiller(bmp, color, color_seleccionado);
+                //floodFiller.setTargetColor(color);
+                //floodFiller.setFillColor(color_seleccionado);
+                floodFiller.setTolerance(10);
+                floodFiller.floodFill((int) event.getX(), (int) event.getY());
+                imagen.setImageBitmap(floodFiller.getImage());
+
+                return true;
+            }
+        }
+    };
+
+    //Algortimo para colorear un área seleccionada de un dibujo
+    // http://stackoverflow.com/questions/8801047/how-to-fill-color-in-image-in-particular-area
+    /*private void FloodFill(Bitmap bmp, Point pt, int replacementColor){
+        Queue<Point> q = new LinkedList<Point>();
+        q.add(pt);
+        int targetColor = bmp.getPixel(pt.x,pt.y);
+
+        while (q.size() > 0) {
+            Point n = q.poll();
+            if (bmp.getPixel(n.x, n.y) != targetColor)
+                continue;
+
+            Point w = n, e = new Point(n.x + 1, n.y);
+            while ((w.x > 0) && (bmp.getPixel(w.x, w.y) == targetColor)) {
+                bmp.setPixel(w.x, w.y, replacementColor);
+                if ((w.y > 0) && (bmp.getPixel(w.x, w.y - 1) == targetColor))
+                    q.add(new Point(w.x, w.y - 1));
+                if ((w.y < bmp.getHeight() - 1)
+                        && (bmp.getPixel(w.x, w.y + 1) == targetColor))
+                    q.add(new Point(w.x, w.y + 1));
+                w.x--;
+            }
+            while ((e.x < bmp.getWidth() - 1)
+                    && (bmp.getPixel(e.x, e.y) == targetColor)) {
+                bmp.setPixel(e.x, e.y, replacementColor);
+
+                if ((e.y > 0) && (bmp.getPixel(e.x, e.y - 1) == targetColor))
+                    q.add(new Point(e.x, e.y - 1));
+                if ((e.y < bmp.getHeight() - 1)
+                        && (bmp.getPixel(e.x, e.y + 1) == targetColor))
+                    q.add(new Point(e.x, e.y + 1));
+                e.x++;
+            }
+        }
+    }*/
+
     //Comportamiento de los botones de colores
     private CompoundButton.OnCheckedChangeListener ColorToggle = new CompoundButton.OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView, boolean isCheked) {
             if (isCheked) {
                 color_seleccionado = ((ColorDrawable) buttonView.getBackground()).getColor();
-                Toast.makeText(getBaseContext(),"Color: " + color_seleccionado, Toast.LENGTH_SHORT).show();
             }
         }
     };
