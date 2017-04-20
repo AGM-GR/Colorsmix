@@ -23,6 +23,7 @@ public class Paint extends AppCompatActivity {
 
     private Dibujo dibujo_seleccionado = null;
     private int color_seleccionado = Color.rgb(0,0,0);
+    private ArrayList<Integer> colores = new ArrayList<>();
 
     private AlertDialog menuDialog;
     private AlertDialog.Builder helpDialog;
@@ -30,7 +31,7 @@ public class Paint extends AppCompatActivity {
     private ImageView imagen_coloreada;
     private ImageView imagen;
     private FrameLayout paint_zone;
-    private ArrayList<ImageView> imagenes = new ArrayList<ImageView>();
+    private ArrayList<ImageView> imagenes = new ArrayList<>();
     private ToggleButton botonAzul;
     private ToggleButton botonAmarillo;
     private ToggleButton botonRojo;
@@ -42,6 +43,7 @@ public class Paint extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint);
 
+        //Enlaza los componentes con la vista
         paint_zone = (FrameLayout) findViewById(R.id.paint_zone);
 
         imagen = (ImageView) findViewById(R.id.image_painter);
@@ -55,6 +57,7 @@ public class Paint extends AppCompatActivity {
         botonNegro = (ToggleButton) findViewById(R.id.blackColor);
         botonBlanco = (ToggleButton) findViewById(R.id.whiteColor);
 
+        //Establece el comportamiento de los botones de colores
         botonRojo.setOnCheckedChangeListener(ColorToggle);
         botonAmarillo.setOnCheckedChangeListener(ColorToggle);
         botonRojo.setOnCheckedChangeListener(ColorToggle);
@@ -77,14 +80,21 @@ public class Paint extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        //Recupera el objeto dibujo del EXTRA
         dibujo_seleccionado = (Dibujo) getIntent().getExtras().getSerializable("Dibujo");
 
+        //Establece el dibujo coloreado
         imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
 
+        //Establece el contorno del dibujo
         imagen.setImageResource(dibujo_seleccionado.getTrozos().get(0));
         paint_zone.removeView(imagen);
+        colores.add(dibujo_seleccionado.getColores().get(0));
 
+        //Crea un ImageView para cada trozo del dibujo
         for (int image : dibujo_seleccionado.getTrozos()) {
+            //Crea el imageview sobre los demás y establece la imagen
             ImageView imageView = new ImageView(getBaseContext());
             imageView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
             imageView.setDrawingCacheEnabled(true);
@@ -92,12 +102,45 @@ public class Paint extends AppCompatActivity {
             imageView.setVisibility(View.VISIBLE);
             imageView.setImageResource(image);
 
+            //Añade el imageview al layaut correspondiente
             paint_zone.addView(imageView);
 
+            //Añade el color actual
+            colores.add(Color.WHITE);
+
+            //Añade el ImageView al array
             imagenes.add(imageView);
         }
 
+
+        //Vuelve a añadir el contorno para que se vea sobre los trozos
         paint_zone.addView(imagen);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        ClearImagesViews();
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        ClearImagesViews();
+
+        super.onDestroy();
+    }
+
+    //Limpia los ImageViews creados y el array de ImageViews
+    private void ClearImagesViews () {
+
+        for (ImageView imageView : imagenes) {
+            if (imageView != imagen)
+                paint_zone.removeView(imageView);
+        }
+
+        imagenes.clear();
     }
 
     //Comportamiento de la imagen al ser seleccionada
@@ -111,7 +154,10 @@ public class Paint extends AppCompatActivity {
                 return false;
             else {
 
-                ((ImageView) v).setColorFilter(color_seleccionado);
+                ImageView currentImage = ((ImageView) v);
+                currentImage.setColorFilter(color_seleccionado);
+
+                colores.set(imagenes.indexOf(currentImage), color_seleccionado);
 
                 return true;
             }
