@@ -2,6 +2,7 @@ package ugr.pdm.rafalex.colorsmix;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LevelsList extends AppCompatActivity {
 
@@ -29,10 +31,14 @@ public class LevelsList extends AppCompatActivity {
         setContentView(R.layout.activity_levels_list);
 
         //Inicializamos el array de dibujos
-        dibujos.add(new Dibujo(R.drawable.cerdo, R.drawable.cerdo_colored));
-        dibujos.add(new Dibujo(R.drawable.conejo, R.drawable.conejo_colored));
-        dibujos.add(new Dibujo(R.drawable.leon, R.drawable.leon_colored));
-        dibujos.add(new Dibujo(R.drawable.kiwi, R.drawable.kiwi_colored));
+        dibujos.add(new Dibujo(R.drawable.cerdo, R.drawable.cerdo_colored,
+                new ArrayList<Integer>(Arrays.asList(R.drawable.cerdo_00, R.drawable.cerdo_01, R.drawable.cerdo_02,
+                    R.drawable.cerdo_03, R.drawable.cerdo_04, R.drawable.cerdo_05,
+                    R.drawable.cerdo_06, R.drawable.cerdo_07)),
+                new ArrayList<Integer>(Arrays.asList(Color.RED))));
+        //dibujos.add(new Dibujo(R.drawable.conejo, R.drawable.conejo_colored));
+        //dibujos.add(new Dibujo(R.drawable.leon, R.drawable.leon_colored));
+        //dibujos.add(new Dibujo(R.drawable.kiwi, R.drawable.kiwi_colored));
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();

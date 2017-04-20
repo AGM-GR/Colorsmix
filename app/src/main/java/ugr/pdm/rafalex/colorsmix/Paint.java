@@ -1,16 +1,11 @@
 package ugr.pdm.rafalex.colorsmix;
 
 import android.app.AlertDialog;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,10 +13,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -36,6 +32,8 @@ public class Paint extends AppCompatActivity {
 
     private ImageView imagen_coloreada;
     private ImageView imagen;
+    private FrameLayout paint_zone;
+    private ArrayList<ImageView> imagenes = new ArrayList<ImageView>();
     private ToggleButton botonAzul;
     private ToggleButton botonAmarillo;
     private ToggleButton botonRojo;
@@ -47,9 +45,10 @@ public class Paint extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint);
 
+        paint_zone = (FrameLayout) findViewById(R.id.paint_zone);
+
         imagen = (ImageView) findViewById(R.id.image_painter);
-        imagen.setDrawingCacheEnabled(true);
-        imagen.setOnTouchListener(touchColorListener);
+        imagenes.add(imagen);
 
         imagen_coloreada = (ImageView) findViewById(R.id.image_sample);
 
@@ -83,8 +82,25 @@ public class Paint extends AppCompatActivity {
         super.onResume();
         dibujo_seleccionado = (Dibujo) getIntent().getExtras().getSerializable("Dibujo");
 
-        imagen.setImageResource(dibujo_seleccionado.getDibujo());
         imagen_coloreada.setImageResource(dibujo_seleccionado.getDibujoColoreado());
+
+        imagen.setImageResource(dibujo_seleccionado.getTrozos().get(0));
+        paint_zone.removeView(imagen);
+
+        for (int image : dibujo_seleccionado.getTrozos()) {
+            ImageView imageView = new ImageView(getBaseContext());
+            imageView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+            imageView.setDrawingCacheEnabled(true);
+            imageView.setOnTouchListener(touchColorListener);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageResource(image);
+
+            paint_zone.addView(imageView);
+
+            imagenes.add(imageView);
+        }
+
+        paint_zone.addView(imagen);
     }
 
     //Comportamiento de la imagen al ser seleccionada
