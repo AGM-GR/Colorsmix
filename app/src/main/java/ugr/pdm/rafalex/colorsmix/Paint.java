@@ -18,14 +18,11 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Paint extends AppCompatActivity {
 
     private Dibujo dibujo_seleccionado = null;
     private int color_seleccionado = Color.rgb(0,0,0);
-    private QueueLinearFloodFiller floodFiller = null;
 
     private AlertDialog menuDialog;
     private AlertDialog.Builder helpDialog;
@@ -114,10 +111,7 @@ public class Paint extends AppCompatActivity {
                 return false;
             else {
 
-                floodFiller = new QueueLinearFloodFiller(bmp, color, color_seleccionado);
-                floodFiller.setTolerance(10);
-                floodFiller.floodFill((int) event.getX(), (int) event.getY());
-                imagen.setImageBitmap(floodFiller.getImage());
+                ((ImageView) v).setColorFilter(color_seleccionado);
 
                 return true;
             }
