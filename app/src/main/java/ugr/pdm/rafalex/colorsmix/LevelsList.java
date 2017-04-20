@@ -35,8 +35,15 @@ public class LevelsList extends AppCompatActivity {
                 new ArrayList<Integer>(Arrays.asList(R.drawable.cerdo_00, R.drawable.cerdo_01, R.drawable.cerdo_02,
                     R.drawable.cerdo_03, R.drawable.cerdo_04, R.drawable.cerdo_05,
                     R.drawable.cerdo_06, R.drawable.cerdo_07)),
-                new ArrayList<Integer>(Arrays.asList(Color.RED))));
-        //dibujos.add(new Dibujo(R.drawable.conejo, R.drawable.conejo_colored));
+                new ArrayList<Integer>(Arrays.asList(Color.BLACK,Color.rgb(255, 127, 127), Color.rgb(255, 127, 127),
+                        Color.rgb(255, 0, 0), Color.rgb(255, 0, 0), Color.BLACK, Color.BLACK, Color.rgb(255, 0, 0)))));
+        dibujos.add(new Dibujo(R.drawable.conejo, R.drawable.conejo_colored,
+                new ArrayList<Integer>(Arrays.asList(R.drawable.conejo_00, R.drawable.conejo_01, R.drawable.conejo_02,
+                        R.drawable.conejo_03, R.drawable.conejo_04, R.drawable.conejo_05, R.drawable.conejo_06,
+                        R.drawable.conejo_07, R.drawable.conejo_08)),
+                new ArrayList<Integer>(Arrays.asList(Color.BLACK, Color.rgb(150, 102, 61), Color.rgb(255, 127, 127),
+                        Color.rgb(255, 127, 127), Color.rgb(126, 126, 126), Color.rgb(255, 0, 0), Color.WHITE,
+                        Color.rgb(127, 127, 255), Color.rgb(127, 127, 255)))));
         //dibujos.add(new Dibujo(R.drawable.leon, R.drawable.leon_colored));
         //dibujos.add(new Dibujo(R.drawable.kiwi, R.drawable.kiwi_colored));
 
