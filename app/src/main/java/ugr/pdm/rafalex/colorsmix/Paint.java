@@ -99,8 +99,6 @@ public class Paint extends AppCompatActivity {
             else {
 
                 floodFiller = new QueueLinearFloodFiller(bmp, color, color_seleccionado);
-                //floodFiller.setTargetColor(color);
-                //floodFiller.setFillColor(color_seleccionado);
                 floodFiller.setTolerance(10);
                 floodFiller.floodFill((int) event.getX(), (int) event.getY());
                 imagen.setImageBitmap(floodFiller.getImage());
@@ -109,42 +107,6 @@ public class Paint extends AppCompatActivity {
             }
         }
     };
-
-    //Algortimo para colorear un área seleccionada de un dibujo
-    // http://stackoverflow.com/questions/8801047/how-to-fill-color-in-image-in-particular-area
-    /*private void FloodFill(Bitmap bmp, Point pt, int replacementColor){
-        Queue<Point> q = new LinkedList<Point>();
-        q.add(pt);
-        int targetColor = bmp.getPixel(pt.x,pt.y);
-
-        while (q.size() > 0) {
-            Point n = q.poll();
-            if (bmp.getPixel(n.x, n.y) != targetColor)
-                continue;
-
-            Point w = n, e = new Point(n.x + 1, n.y);
-            while ((w.x > 0) && (bmp.getPixel(w.x, w.y) == targetColor)) {
-                bmp.setPixel(w.x, w.y, replacementColor);
-                if ((w.y > 0) && (bmp.getPixel(w.x, w.y - 1) == targetColor))
-                    q.add(new Point(w.x, w.y - 1));
-                if ((w.y < bmp.getHeight() - 1)
-                        && (bmp.getPixel(w.x, w.y + 1) == targetColor))
-                    q.add(new Point(w.x, w.y + 1));
-                w.x--;
-            }
-            while ((e.x < bmp.getWidth() - 1)
-                    && (bmp.getPixel(e.x, e.y) == targetColor)) {
-                bmp.setPixel(e.x, e.y, replacementColor);
-
-                if ((e.y > 0) && (bmp.getPixel(e.x, e.y - 1) == targetColor))
-                    q.add(new Point(e.x, e.y - 1));
-                if ((e.y < bmp.getHeight() - 1)
-                        && (bmp.getPixel(e.x, e.y + 1) == targetColor))
-                    q.add(new Point(e.x, e.y + 1));
-                e.x++;
-            }
-        }
-    }*/
 
     //Comportamiento de los botones de colores
     private CompoundButton.OnCheckedChangeListener ColorToggle = new CompoundButton.OnCheckedChangeListener() {
