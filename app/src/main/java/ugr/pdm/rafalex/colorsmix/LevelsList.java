@@ -44,8 +44,14 @@ public class LevelsList extends AppCompatActivity {
                 new ArrayList<Integer>(Arrays.asList(Color.BLACK, Color.rgb(150, 102, 61), Color.rgb(255, 127, 127),
                         Color.rgb(255, 127, 127), Color.rgb(126, 126, 126), Color.rgb(255, 0, 0), Color.WHITE,
                         Color.rgb(127, 127, 255), Color.rgb(127, 127, 255)))));
-        //dibujos.add(new Dibujo(R.drawable.leon, R.drawable.leon_colored));
-        //dibujos.add(new Dibujo(R.drawable.kiwi, R.drawable.kiwi_colored));
+        dibujos.add(new Dibujo(R.drawable.leon, R.drawable.leon_colored,
+                new ArrayList<Integer>(Arrays.asList(R.drawable.leon_00, R.drawable.leon_01, R.drawable.leon_02, R.drawable.leon_03)),
+                new ArrayList<Integer>(Arrays.asList(Color.BLACK, Color.rgb(255, 255, 0), Color.rgb(150, 102, 61), Color.rgb(150, 102, 61)))));
+        dibujos.add(new Dibujo(R.drawable.kiwi, R.drawable.kiwi_colored,
+                new ArrayList<Integer>(Arrays.asList(R.drawable.kiwi_00, R.drawable.kiwi_01, R.drawable.kiwi_02, R.drawable.kiwi_03,
+                        R.drawable.kiwi_04)),
+                new ArrayList<Integer>(Arrays.asList(Color.BLACK, Color.rgb(0, 255, 0), Color.rgb(255, 255, 0), Color.rgb(150, 102, 61),
+                        Color.rgb(150, 102, 61)))));
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();
