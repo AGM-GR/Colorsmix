@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -37,6 +38,10 @@ public class Paint extends AppCompatActivity {
     private ToggleButton botonRojo;
     private ToggleButton botonBlanco;
     private ToggleButton botonNegro;
+    private Button primer_color;
+    private Button segundo_color;
+    private ToggleButton mixColor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,10 @@ public class Paint extends AppCompatActivity {
         botonNegro = (ToggleButton) findViewById(R.id.blackColor);
         botonBlanco = (ToggleButton) findViewById(R.id.whiteColor);
 
+        primer_color = (Button) findViewById(R.id.primer_color);
+        segundo_color = (Button) findViewById(R.id.segundo_color);
+        mixColor = (ToggleButton) findViewById(R.id.mixColor);
+
         //Establece el comportamiento de los botones de colores
         botonRojo.setOnCheckedChangeListener(ColorToggle);
         botonAmarillo.setOnCheckedChangeListener(ColorToggle);
@@ -64,6 +73,10 @@ public class Paint extends AppCompatActivity {
         botonAzul.setOnCheckedChangeListener(ColorToggle);
         botonNegro.setOnCheckedChangeListener(ColorToggle);
         botonBlanco.setOnCheckedChangeListener(ColorToggle);
+
+        primer_color.setOnClickListener(SeleccionColorMezcla);
+        segundo_color.setOnClickListener(SeleccionColorMezcla);
+        mixColor.setOnCheckedChangeListener(ColorToggle);
 
         //Crea los dialogos
         LayoutInflater inflater = this.getLayoutInflater();
@@ -143,6 +156,75 @@ public class Paint extends AppCompatActivity {
         imagenes.clear();
     }
 
+    private int MezclaColores(int c1, int c2) {
+        if (c1 == Color.rgb(255, 0, 0) || c2 == Color.rgb(255, 0, 0)) {
+            if (c1 == Color.rgb(255, 255, 0) || c2 == Color.rgb(255, 255, 0))
+                return Color.rgb(255, 127, 0);
+            else if (c1 == Color.rgb(0, 0, 255) || c2 == Color.rgb(0, 0, 255))
+                return Color.rgb(255, 0, 255);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(127, 0, 0);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(255, 127, 127);
+        }
+
+        if (c1 == Color.rgb(255, 255, 0) || c2 == Color.rgb(255, 255, 0)) {
+            if (c1 == Color.rgb(0, 0, 255) || c2 == Color.rgb(0, 0, 255))
+                return Color.rgb(0, 255, 0);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(127, 127, 0);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(255, 255, 127);
+        }
+
+        if (c1 == Color.rgb(0, 0, 255) || c2 == Color.rgb(0, 0, 255)) {
+            if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(0, 0, 127);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(127, 127, 255);
+        }
+
+        if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+            if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(126, 126, 126);
+
+        if (c1 == Color.rgb(255, 127, 0) || c2 == Color.rgb(255, 127, 0)) {
+            if (c1 == Color.rgb(0, 0, 255) || c2 == Color.rgb(0, 0, 255))
+                return Color.rgb(150, 102, 61);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(255, 190, 126);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(158, 79, 0);
+        }
+
+        if (c1 == Color.rgb(255, 0, 255) || c2 == Color.rgb(255, 0, 255)) {
+            if (c1 == Color.rgb(255, 255, 0) || c2 == Color.rgb(255, 255, 0))
+                return Color.rgb(150, 102, 61);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(255, 127, 255);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(127, 0, 127);
+        }
+
+        if (c1 == Color.rgb(0, 255, 0) || c2 == Color.rgb(0, 255, 0)) {
+            if (c1 == Color.rgb(255, 0, 0) || c2 == Color.rgb(255, 0, 0))
+                return Color.rgb(150, 102, 61);
+            else if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(127, 255, 127);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(0, 127, 0);
+        }
+
+        if (c1 == Color.rgb(150, 102, 61) || c2 == Color.rgb(150, 102, 61)) {
+            if (c1 == Color.rgb(255, 255, 255) || c2 == Color.rgb(255, 255, 255))
+                return Color.rgb(164, 122, 90);
+            else if (c1 == Color.rgb(0, 0, 0) || c2 == Color.rgb(0, 0, 0))
+                return Color.rgb(107, 66, 34);
+        }
+
+        return c1;
+    }
+
     //Comportamiento de la imagen al ser seleccionada
     private View.OnTouchListener touchColorListener = new View.OnTouchListener() {
         @Override
@@ -170,6 +252,17 @@ public class Paint extends AppCompatActivity {
             if (isCheked) {
                 color_seleccionado = ((ColorDrawable) buttonView.getBackground()).getColor();
             }
+        }
+    };
+
+    private View.OnClickListener SeleccionColorMezcla = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.setBackgroundColor(color_seleccionado);
+
+            mixColor.setBackgroundColor(MezclaColores(((ColorDrawable) primer_color.getBackground()).getColor(),
+                    ((ColorDrawable) segundo_color.getBackground()).getColor()));
+
         }
     };
 
