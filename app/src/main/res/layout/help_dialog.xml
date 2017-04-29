@@ -11,7 +11,7 @@
         android:padding="20dp">
 
         <TextView
-            android:text="AIUDA"
+            android:text="Aplicación destinada a fomentar el desarrollo psicomotor de los niños/as a través de la enseñanza y mezcla de colores"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/helpView1" />
