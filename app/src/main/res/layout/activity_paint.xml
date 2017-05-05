@@ -74,9 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:checked="false"
             android:textOff=""
-            android:textOn=""
-            android:background="#FFFFFF" />
+            android:textOn="✔" />
 
     </LinearLayout>
 
@@ -89,46 +90,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FF0000"
+            android:checked="false"
             android:textOff=""
-            android:textOn=""
-            android:background="#FF0000" />
+            android:textOn="✔" />
 
         <ToggleButton
             android:id="@+id/yellowColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFF00"
+            android:checked="false"
             android:textOff=""
-            android:textOn=""
-            android:background="#FFFF00" />
+            android:textOn="✔" />
 
         <ToggleButton
             android:id="@+id/blueColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#0000FF"
+            android:checked="false"
             android:textOff=""
-            android:textOn=""
-            android:background="#0000FF" />
+            android:textOn="✔" />
 
         <ToggleButton
             android:id="@+id/blackColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#000000"
+            android:checked="true"
             android:textOff=""
-            android:textOn=""
-            android:background="#000000" />
+            android:textOn="✔" />
 
         <ToggleButton
             android:id="@+id/whiteColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:checked="false"
             android:textOff=""
-            android:textOn=""
-            android:background="#FFFFFF" />
-
+            android:textOn="✔" />
 
     </LinearLayout>
 

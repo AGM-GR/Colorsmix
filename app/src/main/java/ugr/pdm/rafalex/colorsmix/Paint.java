@@ -43,6 +43,7 @@ public class Paint extends AppCompatActivity {
     private Button primer_color;
     private Button segundo_color;
     private ToggleButton mixColor;
+    private ToggleButton botonSeleccionado;
 
 
     @Override
@@ -67,6 +68,8 @@ public class Paint extends AppCompatActivity {
         primer_color = (Button) findViewById(R.id.primer_color);
         segundo_color = (Button) findViewById(R.id.segundo_color);
         mixColor = (ToggleButton) findViewById(R.id.mixColor);
+
+        botonSeleccionado = botonNegro;
 
         //Establece el comportamiento de los botones de colores
         botonRojo.setOnCheckedChangeListener(ColorToggle);
@@ -255,6 +258,26 @@ public class Paint extends AppCompatActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isCheked) {
             if (isCheked) {
                 color_seleccionado = ((ColorDrawable) buttonView.getBackground()).getColor();
+
+                botonSeleccionado = (ToggleButton) buttonView;
+
+                if (buttonView != botonRojo)
+                    botonRojo.setChecked(false);
+                if (buttonView != botonAmarillo)
+                    botonAmarillo.setChecked(false);
+                if (buttonView != botonAzul)
+                    botonAzul.setChecked(false);
+                if (buttonView != botonNegro)
+                    botonNegro.setChecked(false);
+                if (buttonView != botonBlanco)
+                    botonBlanco.setChecked(false);
+                if (buttonView != mixColor)
+                    mixColor.setChecked(false);
+            }
+            else {
+                if ( buttonView == botonSeleccionado) {
+                    botonSeleccionado.setChecked(true);
+                }
             }
         }
     };
