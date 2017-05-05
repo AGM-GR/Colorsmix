@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class Paint extends AppCompatActivity {
                 .setNeutralButton(R.string.ok_button,null);
 
         menuDialog = helpDialog.create();
+        ((TextView) dialogView.findViewById(R.id.helpText)).setText(R.string.appDescriptionPersonajes);
     }
 
     @Override

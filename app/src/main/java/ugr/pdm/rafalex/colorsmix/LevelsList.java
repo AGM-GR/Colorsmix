@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +61,7 @@ public class LevelsList extends AppCompatActivity {
                 .setNeutralButton(R.string.ok_button,null);
 
         menuDialog = helpDialog.create();
+        ((TextView) dialogView.findViewById(R.id.helpText)).setText(R.string.appDescriptionLevel);
     }
 
     //Función Resume de la actividad

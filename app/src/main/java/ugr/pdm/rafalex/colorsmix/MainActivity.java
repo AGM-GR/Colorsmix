@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNeutralButton(R.string.ok_button,null);
 
         menuDialog = helpDialog.create();
+        ((TextView) dialogView.findViewById(R.id.helpText)).setText(R.string.appDescription);
     }
 
     //Función onCreateOptionMenu, para añadir el estilo de nuestro action_bar

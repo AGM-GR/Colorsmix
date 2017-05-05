@@ -11,10 +11,10 @@
         android:padding="20dp">
 
         <TextView
-            android:text="Aplicación destinada a fomentar el desarrollo psicomotor de los niños/as a través de la enseñanza y mezcla de colores"
+            android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/helpView1" />
+            android:id="@+id/helpText" />
 
     </LinearLayout>
 </ScrollView>
