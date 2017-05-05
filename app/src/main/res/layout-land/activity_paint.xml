@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="ugr.pdm.rafalex.colorsmix.Paint">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image_sample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cerdo_colored" />
+
+        <FrameLayout
+            android:id="@+id/paint_zone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_painter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/cerdo_00"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/primer_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" + "
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/segundo_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" = "
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ToggleButton
+            android:id="@+id/mixColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="✔" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:id="@+id/redColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="✔" />
+
+        <ToggleButton
+            android:id="@+id/yellowColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFFF00"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="✔" />
+
+        <ToggleButton
+            android:id="@+id/blueColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#0000FF"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="✔" />
+
+        <ToggleButton
+            android:id="@+id/blackColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:checked="true"
+            android:textOff=""
+            android:textOn="✔" />
+
+        <ToggleButton
+            android:id="@+id/whiteColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="✔" />
+
+    </LinearLayout>
+
+</LinearLayout>
