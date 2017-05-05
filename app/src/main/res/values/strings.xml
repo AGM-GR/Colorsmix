@@ -2,8 +2,8 @@
     <string name="app_name">Colorsmix</string>
     <string name="start_button_text">Start</string>
     <string name="menu_help">Help</string>
-    <string name="appDescription">Application to promote the psychomotor development of children through teaching and colors mixing</string>
-    <string name="appDescriptionLevel">Select a character from the list to start drawing</string>
-
+    <string name="appDescription">Application to promote the psychomotor development of children through teaching and colors mixing.</string>
+    <string name="appDescriptionLevel">Select a character from the list to start drawing.</string>
+    <string name="appDescriptionPersonajes">To get new colors, try mixing them! Choose two colors and present in our mix box.</string>
     <string name="ok_button">OK</string>
 </resources>

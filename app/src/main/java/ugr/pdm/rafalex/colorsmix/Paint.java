@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -90,6 +91,7 @@ public class Paint extends AppCompatActivity {
 
         menuDialog = helpDialog.create();
         ((TextView) dialogView.findViewById(R.id.helpText)).setText(R.string.appDescriptionPersonajes);
+        ((ImageView) dialogView.findViewById(R.id.mezclaColores)).setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.mezcla_colores, null));
     }
 
     @Override
