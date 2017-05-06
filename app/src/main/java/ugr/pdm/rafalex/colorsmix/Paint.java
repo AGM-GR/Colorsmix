@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Paint extends AppCompatActivity {
@@ -55,7 +56,6 @@ public class Paint extends AppCompatActivity {
         paint_zone = (FrameLayout) findViewById(R.id.paint_zone);
 
         imagen = (ImageView) findViewById(R.id.image_painter);
-        imagenes.add(imagen);
 
         imagen_coloreada = (ImageView) findViewById(R.id.image_sample);
 
@@ -101,6 +101,11 @@ public class Paint extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        boolean yaColoreado = false;
+
+        if (colores.size() > 0)
+            yaColoreado = true;
+
         //Recupera el objeto dibujo del EXTRA
         dibujo_seleccionado = (Dibujo) getIntent().getExtras().getSerializable("Dibujo");
 
@@ -110,7 +115,6 @@ public class Paint extends AppCompatActivity {
         //Establece el contorno del dibujo
         imagen.setImageResource(dibujo_seleccionado.getTrozos().get(0));
         paint_zone.removeView(imagen);
-        colores.add(dibujo_seleccionado.getColores().get(0));
 
         //Crea un ImageView para cada trozo del dibujo
         for (int image : dibujo_seleccionado.getTrozos()) {
@@ -126,12 +130,14 @@ public class Paint extends AppCompatActivity {
             paint_zone.addView(imageView);
 
             //Añade el color actual
-            colores.add(Color.WHITE);
+            if (!yaColoreado)
+                colores.add(Color.WHITE);
+            else
+                imageView.setColorFilter(colores.get(dibujo_seleccionado.getTrozos().indexOf(image)));
 
             //Añade el ImageView al array
             imagenes.add(imageView);
         }
-
 
         //Vuelve a añadir el contorno para que se vea sobre los trozos
         paint_zone.addView(imagen);
@@ -150,6 +156,19 @@ public class Paint extends AppCompatActivity {
         ClearImagesViews();
 
         super.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putIntegerArrayList("DIBUJO", colores);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        colores = savedInstanceState.getIntegerArrayList("DIBUJO");
     }
 
     //Limpia los ImageViews creados y el array de ImageViews
