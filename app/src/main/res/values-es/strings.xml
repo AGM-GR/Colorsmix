@@ -3,7 +3,7 @@
     <string name="start_button_text">Empezar</string>
     <string name="menu_help">Ayuda</string>
     <string name="appDescription">Aplicación destinada a fomentar el desarrollo psicomotor de los niños/as a través de la enseñanza y mezcla de colores.</string>
-    <string name="appDescriptionLevel">Selecciona una personaje de la lista para comenzar a dibujarlo.</string>
+    <string name="appDescriptionLevel">Selecciona un personaje de la lista para comenzar a dibujarlo.</string>
     <string name="appDescriptionPersonajes">¡Para obtener nuevos colores prueba a mezclarlos! Elige dos colores e introducelos en nuestra caja de mezclas.</string>
     <string name="ok_button">Aceptar</string>
 </resources>
