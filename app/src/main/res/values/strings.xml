@@ -14,4 +14,5 @@
     <string name="negativo1">"Not so, try again"</string>
     <string name="negativo2">"Try again"</string>
     <string name="negativo3">"Keep trying"</string>
+    <string name="mensajeFinal">"¡You got it! You are a champion"</string>
 </resources>

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -279,12 +280,22 @@ public class Paint extends AppCompatActivity {
                     else
                         mensajeMal();
 
+                    completado();
+
                     return true;
                 }
             }
             return false;
         }
     };
+
+    private void completado() {
+        Log.d("prueba","uno " +colores + " dos " + dibujo_seleccionado.getColores());
+        for (int i = 1; i < colores.size(); i ++){
+            if(colores.get(i) == dibujo_seleccionado.getColores().get(i))
+                Toast.makeText(this, R.string.mensajeFinal, Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void mensajeBien() {
         int numero = (int) (Math.random() * 5);
