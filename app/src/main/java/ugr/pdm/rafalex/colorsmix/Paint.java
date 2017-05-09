@@ -262,31 +262,52 @@ public class Paint extends AppCompatActivity {
     private View.OnTouchListener touchColorListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            ImageView imageView = new ImageView(getBaseContext());
-            Bitmap bmp = Bitmap.createBitmap(v.getDrawingCache());
-            int color = bmp.getPixel((int) event.getX(), (int) event.getY());
+            if (event.getAction() == MotionEvent.ACTION_DOWN){
+                ImageView imageView = new ImageView(getBaseContext());
+                Bitmap bmp = Bitmap.createBitmap(v.getDrawingCache());
+                int color = bmp.getPixel((int) event.getX(), (int) event.getY());
 
-            if (color == Color.TRANSPARENT)
-                return false;
-            else {
+                if (color != Color.TRANSPARENT){
 
-                ImageView currentImage = ((ImageView) v);
-                currentImage.setColorFilter(color_seleccionado);
+                    ImageView currentImage = ((ImageView) v);
+                    currentImage.setColorFilter(color_seleccionado);
 
-                colores.set(imagenes.indexOf(currentImage), color_seleccionado);
+                    colores.set(imagenes.indexOf(currentImage), color_seleccionado);
 
-                //if(imageView.setColorFilter(colores.get(dibujo_seleccionado.getTrozos(). == Color.rgb(255, 127, 127)){
-                //    mensaje();
-                //}
+                    if (color_seleccionado == dibujo_seleccionado.getColores().get(imagenes.indexOf(currentImage)))
+                        mensajeBien();
+                    else
+                        mensajeMal();
 
-                return true;
+                    return true;
+                }
             }
+            return false;
         }
     };
 
-    private void mensaje() {
-        toast = Toast.makeText(this, "Vas bien, sigue asi", Toast.LENGTH_SHORT);
-        toast.show();
+    private void mensajeBien() {
+        int numero = (int) (Math.random() * 5);
+        if (numero == 0)
+            Toast.makeText(this, R.string.positivo1, Toast.LENGTH_SHORT).show();
+        else if (numero == 1)
+            Toast.makeText(this, R.string.positivo2, Toast.LENGTH_SHORT).show();
+        else if (numero == 2)
+            Toast.makeText(this, R.string.positivo3, Toast.LENGTH_SHORT).show();
+        else if (numero == 3)
+            Toast.makeText(this, R.string.positivo4, Toast.LENGTH_SHORT).show();
+        else if (numero == 4)
+            Toast.makeText(this, R.string.positivo5, Toast.LENGTH_SHORT).show();
+    }
+
+    private void mensajeMal() {
+        int numero = (int) (Math.random() * 3);
+        if (numero == 0)
+            Toast.makeText(this, R.string.negativo1, Toast.LENGTH_SHORT).show();
+        else if (numero == 1)
+            Toast.makeText(this, R.string.negativo2, Toast.LENGTH_SHORT).show();
+        else if (numero == 2)
+            Toast.makeText(this, R.string.negativo3, Toast.LENGTH_SHORT).show();
     }
 
     //Comportamiento de los botones de colores

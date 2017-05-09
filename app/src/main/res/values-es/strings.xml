@@ -6,4 +6,12 @@
     <string name="appDescriptionLevel">Selecciona un personaje de la lista para comenzar a colorearlo.</string>
     <string name="appDescriptionPersonajes">¡Para obtener nuevos colores prueba a mezclarlos! Elige dos colores e introducelos en nuestra caja de mezclas.</string>
     <string name="ok_button">Aceptar</string>
+    <string name="positivo1">"Vas bien, ¡sigue así!"</string>
+    <string name="positivo2">"¡Muy bien!"</string>
+    <string name="positivo3">"¡Eso es!"</string>
+    <string name="positivo4">"¡Estupendo!"</string>
+    <string name="positivo5">"¡Está perfecto!"</string>
+    <string name="negativo1">"Así no es, intentalo de nuevo"</string>
+    <string name="negativo2">"Vuelve a probar"</string>
+    <string name="negativo3">"Sigue intentandolo"</string>
 </resources>
