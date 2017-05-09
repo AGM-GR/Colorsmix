@@ -19,8 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
-import java.lang.reflect.Array;
+import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Paint extends AppCompatActivity {
@@ -45,6 +44,8 @@ public class Paint extends AppCompatActivity {
     private Button segundo_color;
     private ToggleButton mixColor;
     private ToggleButton botonSeleccionado;
+
+    private Toast toast;
 
 
     @Override
@@ -161,6 +162,9 @@ public class Paint extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putIntegerArrayList("DIBUJO", colores);
+        savedInstanceState.putInt("Primer color", (((ColorDrawable) primer_color.getBackground()).getColor()));
+        savedInstanceState.putInt("Segundo color", (((ColorDrawable) segundo_color.getBackground()).getColor()));
+        savedInstanceState.putInt("mix color", (((ColorDrawable) mixColor.getBackground()).getColor()));
 
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -169,6 +173,9 @@ public class Paint extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         colores = savedInstanceState.getIntegerArrayList("DIBUJO");
+        primer_color.setBackgroundColor(savedInstanceState.getInt("Primer color"));
+        segundo_color.setBackgroundColor(savedInstanceState.getInt("Segundo color"));
+        mixColor.setBackgroundColor(savedInstanceState.getInt("mix color"));
     }
 
     //Limpia los ImageViews creados y el array de ImageViews
@@ -255,6 +262,7 @@ public class Paint extends AppCompatActivity {
     private View.OnTouchListener touchColorListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            ImageView imageView = new ImageView(getBaseContext());
             Bitmap bmp = Bitmap.createBitmap(v.getDrawingCache());
             int color = bmp.getPixel((int) event.getX(), (int) event.getY());
 
@@ -267,10 +275,19 @@ public class Paint extends AppCompatActivity {
 
                 colores.set(imagenes.indexOf(currentImage), color_seleccionado);
 
+                //if(imageView.setColorFilter(colores.get(dibujo_seleccionado.getTrozos(). == Color.rgb(255, 127, 127)){
+                //    mensaje();
+                //}
+
                 return true;
             }
         }
     };
+
+    private void mensaje() {
+        toast = Toast.makeText(this, "Vas bien, sigue asi", Toast.LENGTH_SHORT);
+        toast.show();
+    }
 
     //Comportamiento de los botones de colores
     private CompoundButton.OnCheckedChangeListener ColorToggle = new CompoundButton.OnCheckedChangeListener() {
