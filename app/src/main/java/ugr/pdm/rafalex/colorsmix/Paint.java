@@ -290,11 +290,17 @@ public class Paint extends AppCompatActivity {
     };
 
     private void completado() {
-        Log.d("prueba","uno " +colores + " dos " + dibujo_seleccionado.getColores());
+
+        boolean igual = true;
         for (int i = 1; i < colores.size(); i ++){
-            if(colores.get(i) == dibujo_seleccionado.getColores().get(i))
-                Toast.makeText(this, R.string.mensajeFinal, Toast.LENGTH_SHORT).show();
+            if(!colores.get(i).equals(dibujo_seleccionado.getColores().get(i))) {
+                igual = false;
+                break;
+            }
         }
+        
+        if (igual)
+            Toast.makeText(this, R.string.mensajeFinal, Toast.LENGTH_SHORT).show();
     }
 
     private void mensajeBien() {
