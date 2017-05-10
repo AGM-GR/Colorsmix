@@ -3,6 +3,7 @@ package ugr.pdm.rafalex.colorsmix;
 import android.app.AlertDialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -313,6 +314,9 @@ public class Paint extends AppCompatActivity {
 
             ImageView img = ((ImageView) dialogoFinView.findViewById(R.id.cerdo_bailarin));
             img.setBackgroundResource(R.drawable.cerdito_bailando);
+
+            AnimationDrawable accion = (AnimationDrawable) img.getBackground();
+            accion.start();
 
             actividadDialogoFinal.show();
         }

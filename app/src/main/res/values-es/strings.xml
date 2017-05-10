@@ -14,6 +14,5 @@
     <string name="negativo1">"Así no es, intentalo de nuevo"</string>
     <string name="negativo2">"Vuelve a probar"</string>
     <string name="negativo3">"Sigue intentandolo"</string>
-    <string name="mensajeFinal">"¡Lo conseguiste! eres un campeón"</string>
     <string name="dialogo">"¡Felicidades!"</string>
 </resources>
