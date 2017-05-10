@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +29,9 @@ public class Paint extends AppCompatActivity {
     private ArrayList<Integer> colores = new ArrayList<>();
 
     private AlertDialog menuDialog;
+    private AlertDialog actividadDialogoFinal;
     private AlertDialog.Builder helpDialog;
+    private AlertDialog.Builder finDialog;
 
     private ImageView imagen_coloreada;
     private ImageView imagen;
@@ -299,8 +300,23 @@ public class Paint extends AppCompatActivity {
             }
         }
         
-        if (igual)
-            Toast.makeText(this, R.string.mensajeFinal, Toast.LENGTH_SHORT).show();
+        if (igual) {
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dialogoFinView = inflater.inflate(R.layout.dialogo_final, null);
+
+            finDialog = new AlertDialog.Builder(this, R.style.DialogTheme)
+                    .setView(dialogoFinView)
+                    .setTitle(R.string.dialogo)
+                    .setNeutralButton(R.string.ok_button, null);
+
+            actividadDialogoFinal = finDialog.create();
+
+            ImageView img = ((ImageView) dialogoFinView.findViewById(R.id.cerdo_bailarin));
+            img.setBackgroundResource(R.drawable.cerdito_bailando);
+
+            actividadDialogoFinal.show();
+        }
+        //Toast.makeText(this, R.string.mensajeFinal, Toast.LENGTH_SHORT).show();
     }
 
     private void mensajeBien() {

@@ -6,13 +6,14 @@
     <string name="appDescriptionLevel">Select a character from the list to start drawing.</string>
     <string name="appDescriptionPersonajes">To get new colors, try mixing them! Choose two colors and present in our mix box.</string>
     <string name="ok_button">OK</string>
-    <string name="positivo1">"You are well, ¡go on!"</string>
-    <string name="positivo2">"¡Very well!"</string>
-    <string name="positivo3">"¡That´s it!"</string>
-    <string name="positivo4">"¡Awesome!"</string>
-    <string name="positivo5">"¡Perfect!"</string>
+    <string name="positivo1">"You are well, go on!"</string>
+    <string name="positivo2">"Very well!"</string>
+    <string name="positivo3">"That´s it!"</string>
+    <string name="positivo4">"Awesome!"</string>
+    <string name="positivo5">"Perfect!"</string>
     <string name="negativo1">"Not so, try again"</string>
     <string name="negativo2">"Try again"</string>
     <string name="negativo3">"Keep trying"</string>
-    <string name="mensajeFinal">"¡You got it! You are a champion"</string>
+    <string name="mensajeFinal">"You got it! You are a champion"</string>
+    <string name="dialogo">"Congratulation!"</string>
 </resources>
