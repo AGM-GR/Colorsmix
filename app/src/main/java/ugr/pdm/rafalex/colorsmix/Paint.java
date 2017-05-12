@@ -168,6 +168,7 @@ public class Paint extends AppCompatActivity {
         savedInstanceState.putInt("Primer color", (((ColorDrawable) primer_color.getBackground()).getColor()));
         savedInstanceState.putInt("Segundo color", (((ColorDrawable) segundo_color.getBackground()).getColor()));
         savedInstanceState.putInt("mix color", (((ColorDrawable) mixColor.getBackground()).getColor()));
+        savedInstanceState.putInt("color seleccionado", (color_seleccionado));
 
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -179,6 +180,7 @@ public class Paint extends AppCompatActivity {
         primer_color.setBackgroundColor(savedInstanceState.getInt("Primer color"));
         segundo_color.setBackgroundColor(savedInstanceState.getInt("Segundo color"));
         mixColor.setBackgroundColor(savedInstanceState.getInt("mix color"));
+        color_seleccionado = savedInstanceState.getInt("color seleccionado");
     }
 
     //Limpia los ImageViews creados y el array de ImageViews
